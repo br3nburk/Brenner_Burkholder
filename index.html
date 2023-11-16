@@ -49,13 +49,17 @@
     <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
     <!-- Your Leaflet Heatmap Script -->
     <script>
-        var map = L.map('map').setView([-71.8023, 42.2626], 17); // Set initial coordinates and zoom level
+        var map = L.map('map').clearBounds()
+
+        // setView(-71.8023, 42.2626, zoom = 17); // Set initial coordinates and zoom level
+
+
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
 
         // Load your GeoJSON data
-        fetch('https://github.com/br3nburk/Exercise_Heatmap/blob/main/BB_exercise_windowed.geojson')
+        fetch('C:/Users/Brenner Burkholder/Documents/GitHub/Brenner_BurkholderBB_exercise_windowed.geojson')
             .then(response => response.json())
             .then(data => {
 
