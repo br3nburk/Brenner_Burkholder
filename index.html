@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Name - Personal Page</title>
     <link rel="stylesheet" href="style.css">
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 </head>
 <body>
     <header>
@@ -26,8 +28,10 @@
     <section id="portfolio">
         <h2>Portfolio</h2>
         <div class="project">
-            <h3>Project 1</h3>
+            <h3>Custom Exercise Data Heatmap</h3>
             <p>Description of Project 1 goes here.</p>
+            <!-- Map div -->
+            <div id="map" style="height: 500px;"></div>
         </div>
         <div class="project">
             <h3>Project 2</h3>
@@ -38,5 +42,29 @@
         <h2>Contact</h2>
         <p>You can reach me at: brennerburkholder [@] gmail.com</p>
     </section>
+
+    <!-- Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Leaflet.heat JavaScript -->
+    <script src="https://unpkg.com/leaflet.heat/dist/leaflet-heat.js"></script>
+    <!-- Your Leaflet Heatmap Script -->
+    <script>
+        var map = L.map('map').setView([0, 0], 2); // Set initial coordinates and zoom level
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Load your GeoJSON data
+        fetch('C:/Users/Brenner Burkholder/Documents/GitHub/Exercise_Heatmap/BB_exercise_windowed.geojson')
+            .then(response => response.json())
+            .then(data => {
+                // Create a heatmap layer
+                var heatLayer = L.heatLayer(data.features.map(feature => feature.geometry.coordinates), {
+                    radius: 20,
+                    blur: 15,
+                    maxZoom: 17,
+                }).addTo(map);
+            });
+    </script>
 </body>
 </html>
