@@ -91,16 +91,19 @@
             attribution: '© OpenStreetMap contributors'
         }).addTo(map);
         // Load your GeoJSON data
-        fetch('C:/Users/Brenner Burkholder/Documents/GitHub/Brenner_Burkholder/BB_exercise_windowed.geojson')
+        fetch('https://raw.githubusercontent.com/br3nburk/Brenner_Burkholder/main/BB_exercise_windowed.geojson')
             .then(response => response.json())
             .then(data => {
                 // Create a heatmap layer
+                L.geoJSON(data).addTo(map);
                 var heatLayer = L.heatLayer(data.features.map(feature => feature.geometry.coordinates), {
                     radius: 20,
                     blur: 15,
                     maxZoom: 17,
                 }).addTo(map);
+                
             });
+            
     </script>
 </body>
 </html>
