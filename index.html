@@ -98,7 +98,7 @@
             .then(response => response.json())
             .then(data => {
                 // Create a heatmap layer
-                //L.geoJSON(data).addTo(map);
+                L.geoJSON(data).addTo(map);
                 L.heatLayer(data.features.map(feature => feature.geometry.coordinates), {
                     radius: 1,
                     blur: 15,
