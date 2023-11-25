@@ -106,16 +106,6 @@
                 }).addTo(map);
                 
             });
-
-        map.on({
-    movestart: function () { draw = false; },
-    moveend:   function () { draw = true; },
-    mousemove: function (e) {
-        if (draw) {
-            heat.addLatLng(e.latlng);
-        }
-    }
-})
             
     </script>
 </body>
