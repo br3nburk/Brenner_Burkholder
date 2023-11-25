@@ -102,15 +102,15 @@
     coordsToLatLng: function (coords) {
         //                    latitude , longitude, altitude
         //return new L.LatLng(coords[1], coords[0], coords[2]); //Normal behavior
-        return new L.LatLng(coords[0], coords[1], coords[2]);
+        return new L.heatLayer(coords);
     }
 });
                 // Create a heatmap layer
-                var heatLayer = L.heatLayer(data.features.map(feature => feature.geometry.coordinates), {
-                    radius: 1,
-                    blur: 15,
-                    maxZoom: 17,
-                }).addTo(map);
+                //var heatLayer = L.heatLayer(data.features.map(feature => feature.geometry.coordinates), {
+               //     radius: 1,
+                //    blur: 15,
+                 //   maxZoom: 17,
+               // }).addTo(map);
                 
             });
 
