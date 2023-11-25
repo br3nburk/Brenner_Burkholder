@@ -135,10 +135,14 @@
                 maxZoom: 17,
             }).addTo(map);
 
-            markers.removeLayer(geojsonLayer);
-        });
             
-        heatLayer.addTo(map);
+        });
+        var map = new L.Map('map-canvas', {
+
+            layers: [map, heatLayer]
+        });    
+        
+        heatLayer.setData(heatmapData);
         // Add GeoJSON layer to the map
         //geojsonLayer.addTo(map);
 
