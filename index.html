@@ -110,22 +110,36 @@
           //  }); 
     
 
-        var geojsonLayer = new L.heatLayer.AJAX('https://raw.githubusercontent.com/br3nburk/Brenner_Burkholder/main/Clark_smol.geojson');
-        
+        var geojsonLayer = new L.GeoJSON.AJAX('https://raw.githubusercontent.com/br3nburk/Brenner_Burkholder/main/Clark_smol.geojson', {
+                onEachFeature: function (feature, layer) {
+        // Optionally, do something with each feature
+            }
+        });
+
+// When the AJAX request is complete
+        geojsonLayer.on('data:loaded', function () {
+            // Create an array to hold heatmap data points
+            var heatmapData = [];
+
+            // Process the GeoJSON data to extract coordinates for the heatmap
+            geojsonLayer.eachLayer(function (layer) {
+                if (layer.feature.geometry.type === 'Point') {
+                    heatmapData.push(layer.getLatLng().toArray());
+                }
+            });
+
+            // Create the heatmap layer using Leaflet.heat
+            var heatLayer = L.heatLayer(heatmapData, {
+                radius: 10,
+                blur: 15,
+                maxZoom: 17,
+            }).addTo(map);
+        });
+
+        // Add GeoJSON layer to the map
         geojsonLayer.addTo(map);
 
-        var heat = L.heatLayer(geojsonLayer).addTo(map);
-            draw = true;
 
-        map.on({
-            movestart: function () { draw = false; },
-            moveend:   function () { draw = true; },
-            mousemove: function (e) {
-                if (draw) {
-                    heat.addLatLng(e.latlng);
-        }
-    }
-})
     </script>
 </body>
 </html>
