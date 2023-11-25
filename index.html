@@ -97,15 +97,8 @@
         fetch('https://raw.githubusercontent.com/br3nburk/Brenner_Burkholder/main/Clark_smol.geojson')
             .then(response => response.json())
             .then(data => {
-                // Flip coordinates
-                L.geoJSON(data, 
-    //coordsToLatLng: function (coords) {
-        //                    latitude , longitude, altitude
-        //return new L.LatLng(coords[1], coords[0], coords[2]); //Normal behavior
-       // return new L.heatLayer(coords);
-    
-
                 // Create a heatmap layer
+                //L.geoJSON(data).addTo(map);
                 var heatLayer = L.heatLayer(data.features.map(feature => feature.geometry.coordinates), {
                     radius: 1,
                     blur: 15,
