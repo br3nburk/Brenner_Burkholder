@@ -113,12 +113,18 @@
         var geojsonLayer = new L.GeoJSON.AJAX('https://raw.githubusercontent.com/br3nburk/Brenner_Burkholder/main/Clark_smol.geojson');
 // geojsonLayer.addTo(map);
 
-        var heatLayer = L.heatLayer(geojsonLayer), {
-            radius: 2,
-            blur: 15,
-            maxZoom: 17,
-             }.addTo(map);
-            
+        var heat = L.heatLayer(geojsonLayer).addTo(map);
+            draw = true;
+
+        map.on({
+            movestart: function () { draw = false; },
+            moveend:   function () { draw = true; },
+            mousemove: function (e) {
+                if (draw) {
+                    heat.addLatLng(e.latlng);
+        }
+    }
+})
     </script>
 </body>
 </html>
