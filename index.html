@@ -140,10 +140,10 @@
         //markers.clearLayer()
         var map = new L.Map('map-canvas', {
 
-            layers: [map, heatLayer]
+            layers: [map, heatLayer.setData(heatmapData)]
         });    
         
-        heatLayer.setData(heatmapData);
+        //heatLayer.setData(heatmapData);
         // Add GeoJSON layer to the map
         //geojsonLayer.addTo(map);
 
