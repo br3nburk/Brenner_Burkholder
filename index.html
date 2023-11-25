@@ -135,8 +135,8 @@
                 maxZoom: 17,
             }).addTo(map);
         });
-            markers.clearLayers()
-            
+            markers.removeLayer(heatmapData);
+
         // Add GeoJSON layer to the map
         //geojsonLayer.addTo(map);
 
