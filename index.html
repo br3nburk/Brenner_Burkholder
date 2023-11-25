@@ -129,14 +129,14 @@
             });
 
             // Create the heatmap layer using Leaflet.heat
-            var heatLayer = L.heatLayer(heatmapData, {
+            var heatLayer = new L.heatLayer(heatmapData, {
                 radius: 10,
                 blur: 15,
                 maxZoom: 17,
             }).addTo(map);
         });
             markers.removeLayer(heatmapData);
-
+            heatLayer.addTo(map);
         // Add GeoJSON layer to the map
         //geojsonLayer.addTo(map);
 
