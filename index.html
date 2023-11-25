@@ -111,8 +111,13 @@
     
 
         var geojsonLayer = new L.GeoJSON.AJAX('https://raw.githubusercontent.com/br3nburk/Brenner_Burkholder/main/Clark_smol.geojson');
-geojsonLayer.addTo(map);
-        L.GeoJSON(geojsonLayer).addTo(map);
+// geojsonLayer.addTo(map);
+
+        var heatLayer = L.heatLayer(data.features.map(feature => feature.geometry.coordinates), {
+            radius: 2,
+            blur: 15,
+            maxZoom: 17,
+             }).addTo(map);
             
     </script>
 </body>
