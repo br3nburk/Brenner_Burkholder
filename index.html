@@ -134,9 +134,11 @@
                 blur: 15,
                 maxZoom: 17,
             }).addTo(map);
+
+            markers.removeLayer(geojsonLayer);
         });
-            markers.removeLayer(heatmapData);
-            heatLayer.addTo(map);
+            
+        heatLayer.addTo(map);
         // Add GeoJSON layer to the map
         //geojsonLayer.addTo(map);
 
