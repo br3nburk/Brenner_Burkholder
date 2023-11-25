@@ -110,8 +110,9 @@
           //  }); 
     
 
-        var geojsonLayer = new L.GeoJSON.AJAX('https://raw.githubusercontent.com/br3nburk/Brenner_Burkholder/main/Clark_smol.geojson');
-// geojsonLayer.addTo(map);
+        var geojsonLayer = new L.heatLayer.AJAX('https://raw.githubusercontent.com/br3nburk/Brenner_Burkholder/main/Clark_smol.geojson');
+        
+        geojsonLayer.addTo(map);
 
         var heat = L.heatLayer(geojsonLayer).addTo(map);
             draw = true;
