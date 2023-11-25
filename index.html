@@ -111,6 +111,7 @@
 
         var geojsonLayer = new L.GeoJSON.AJAX('https://raw.githubusercontent.com/br3nburk/Brenner_Burkholder/main/Clark_smol.geojson');
 geojsonLayer.addTo(map);
+        L.GeoJSON(geojsonLayer).addTo(map);
             
     </script>
 </body>
